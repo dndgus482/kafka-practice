@@ -9,28 +9,28 @@
   file:
     path: "{{ dir_path }}"
     state: absent
-    when: init is defined
+  when: init is defined
 
 - name: 카프카 디렉토리 생성
   file:
     path: "{{ dir_path }}"
     state: directory
     mode: '0755'
-    when: init is defined
+  when: init is defined
 
 - name: 카프카 다운
   get_url:
     url: https://archive.apache.org/dist/kafka/{{ kafkaversion }}/kafka_2.13-{{ kafkaversion }}.tgz
     dest: /opt/
     mode: '0600'
-    when: init is defined
+  when: init is defined
 
 - name: 카프카 압축 해제
   unarchive:
     src: /opt/kafka_2.13-{{ kafkaversion }}.tgz
     dest: /usr/local
     remote_src: yes
-    when: init is defined
+  when: init is defined
 
 - name: 카프카 심볼릭 링크
   file:
@@ -38,7 +38,7 @@
     src: /usr/local/kafka_2.13-{{ kafkaversion }}
     state: link
     force: yes
-    when: init is defined
+  when: init is defined
 
 - name: 카프카 심볼릭 링크 (홈)
   file:
@@ -46,7 +46,7 @@
     src: /usr/local/kafka_2.13-{{ kafkaversion }}
     state: link
     force: yes
-    when: init is defined
+  when: init is defined
 
 - name: 카프카 서버 설정 복사
   template:
