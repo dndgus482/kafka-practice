@@ -42,7 +42,7 @@
 
 - name: 카프카 심볼릭 링크 (홈)
   file:
-    path: /home/{{  }}/kafka
+    path: /home/{{ user_name }}/kafka
     src: /usr/local/kafka_2.13-{{ kafkaversion }}
     state: link
     force: yes
