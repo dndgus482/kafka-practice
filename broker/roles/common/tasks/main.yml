@@ -1,0 +1,17 @@
+---
+- name: Set timezone to Asia/Seoul
+  community.general.timezone:
+    name: Asia/Seoul
+
+- name: install Java and tools
+  yum:
+    name: ['dstat', 'java-1.8.0-openjdk', 'java-1.8.0-openjdk-devel', 'git']
+    state: latest
+
+- name: Copy hosts file to /etc/hosts
+  ansible.builtin.copy:
+    src: hosts
+    dest: /etc/hosts
+    owner: ec2-user
+    group: ec2-user
+    mode: '0644'
