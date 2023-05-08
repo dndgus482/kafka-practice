@@ -51,7 +51,7 @@
 - name: 카프카 로그 심볼릭 링크 (홈)
   file:
     path: /home/{{ user_name }}/kafka-logs
-    src: {{ dir_path }}
+    src: "{{ dir_path }}"
     state: link
     force: yes
   when: init is defined
