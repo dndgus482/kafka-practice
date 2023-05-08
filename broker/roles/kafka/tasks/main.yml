@@ -95,4 +95,5 @@
 - name: 카프카 서버 시작
   systemd:
     state: started
+    enabled: yes
     name: kafka-server
